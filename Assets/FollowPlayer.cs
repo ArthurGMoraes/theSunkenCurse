@@ -5,10 +5,11 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     public Transform player;
+    public float y;
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = player.transform.position + new Vector3(0, 3.2f, -1);
+        transform.position = player.transform.position + new Vector3(0, y, -1);
     }
 }
