@@ -2600,6 +2600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
   jumpForce: 5
+  maxFuel: 10000
   fuelSlider: {fileID: 953458946}
 --- !u!50 &737405457
 Rigidbody2D:

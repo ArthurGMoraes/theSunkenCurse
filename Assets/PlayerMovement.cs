@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isAboveMaxFuel;
 
     private float fuel;
-    private float maxFuel;
+    public float maxFuel;
 
     [SerializeField]
     private Slider fuelSlider;
@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 3.0f;
         fuel = 100f;
-        maxFuel = 10000f;
     }
 
     // Update is called once per frame
