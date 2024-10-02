@@ -46,7 +46,6 @@ public class PlayerMovement : MonoBehaviour
 =======
         rb.gravityScale = 3.0f;
         fuel = 100f;
-        maxFuel = 10000f;
 >>>>>>> 2de719d05c7ccbac0672db58f46d09e40bebe6fd
     }
 
