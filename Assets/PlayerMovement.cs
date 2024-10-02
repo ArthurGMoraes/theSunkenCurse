@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,43 +9,83 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
 
     private Rigidbody2D rb;
-    //private bool facingRight = true;
-    private float moveDirection;
-    private bool isJumping = false;
-   
 
+    private bool isJumping;
+    private bool isAboveMaxFuel;
+
+    private float fuel;
+    private float maxFuel;
+
+    [SerializeField]
+    private Slider fuelSlider;
+
+    private float currentFuel;
     // Called after all objects are initialized
-    private void Awake (){
+    void Start()
+    {
         rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 3.0f;
+        fuel = 100f;
+        maxFuel = 10000f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetInput(); 
-    }
+        fuelSlider.value = fuel / maxFuel;
 
-    private void FixedUpdate()
-    {
-        Move();
-    }
-
-    private void Move()
-    {
-        rb.velocity = new Vector2(moveDirection * moveSpeed, rb.velocity.y);
-        if (isJumping)
+        if (fuel >= maxFuel)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+            isAboveMaxFuel = true;
         }
-        isJumping = false;
-    }
-
-    private void GetInput()
-    {
-        moveDirection = Input.GetAxis("Horizontal");
-        if (Input.GetButtonDown("Jump"))
+        else
         {
-            isJumping = true;
+            isAboveMaxFuel = false;
         }
+
+        Vector2 newVelocity = Vector2.zero;
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            newVelocity.x = moveSpeed;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            newVelocity.x = -moveSpeed;
+        }
+
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            if (fuel > 0)
+            {
+                isJumping = true;
+                newVelocity.y = moveSpeed;
+                fuel -= 5;
+            }
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            if (fuel > 0)
+            {
+                isJumping = true;
+                newVelocity.y = -moveSpeed;
+                fuel -= 5;
+            }
+        }
+        else
+        {
+            isJumping = false;
+        }
+
+        Debug.Log("Fuel: " + fuel + " Jumping: " + isJumping);
+
+        if (!isJumping && !isAboveMaxFuel)
+        {
+            fuel += 5;
+        }
+
+
+        rb.velocity = newVelocity;
     }
 }
