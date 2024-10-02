@@ -13,9 +13,27 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping = false;
    
 
+<<<<<<< Updated upstream
+=======
+    private bool isJumping;
+    private bool isAboveMaxFuel;
+
+    private float fuel;
+    public float maxFuel;
+
+    [SerializeField]
+    private Slider fuelSlider;
+
+    private float currentFuel;
+>>>>>>> Stashed changes
     // Called after all objects are initialized
     private void Awake (){
         rb = GetComponent<Rigidbody2D>();
+<<<<<<< Updated upstream
+=======
+        rb.gravityScale = 3.0f;
+        fuel = 100f;
+>>>>>>> Stashed changes
     }
 
     // Update is called once per frame
