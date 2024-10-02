@@ -2600,15 +2600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
   jumpForce: 5
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-  maxFuel: 10000
   fuelSlider: {fileID: 953458946}
->>>>>>> Stashed changes
-=======
-  fuelSlider: {fileID: 953458946}
->>>>>>> 2de719d05c7ccbac0672db58f46d09e40bebe6fd
 --- !u!50 &737405457
 Rigidbody2D:
   serializedVersion: 4
