@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
@@ -9,13 +10,15 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     private float moveDirectionH;
     private float moveDirectionV;
+    private bool facingRight = true;
+    public Animator animator;
 
     private Rigidbody2D rb;
 
     private bool isJumping = false;
-    private bool isAboveMaxFuel;
+    private bool isAboveMaxFuel = false;
 
-    private float fuel;
+    public float fuel;
     public float maxFuel;
 
     [SerializeField]
@@ -27,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 3.0f;
-        fuel = 100f;
     }
 
     // Update is called once per frame
@@ -38,6 +40,28 @@ public class PlayerMovement : MonoBehaviour
         Move();
 
         FuelUpdate();
+
+        Animate();
+    }
+
+    void FlipCharacter()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(0f, 180f, 0f);
+    }
+
+    void Animate()
+    {
+        if (facingRight && moveDirectionH < 0)
+        {
+            FlipCharacter();
+        }
+        else if (!facingRight && moveDirectionH > 0)
+        {
+            FlipCharacter();
+        }
+
+        animator.SetBool("isJumping", isJumping);
     }
 
     void FuelUpdate()
