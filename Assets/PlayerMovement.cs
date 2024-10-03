@@ -7,10 +7,12 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed;
     public float jumpForce;
+    private float moveDirectionH;
+    private float moveDirectionV;
 
     private Rigidbody2D rb;
 
-    private bool isJumping;
+    private bool isJumping = false;
     private bool isAboveMaxFuel;
 
     private float fuel;
@@ -31,6 +33,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GetInput();
+
+        Move();
+
+        FuelUpdate();
+    }
+
+    void FuelUpdate()
+    {
         fuelSlider.value = fuel / maxFuel;
 
         if (fuel >= maxFuel)
@@ -42,49 +53,47 @@ public class PlayerMovement : MonoBehaviour
             isAboveMaxFuel = false;
         }
 
-        Vector2 newVelocity = Vector2.zero;
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            newVelocity.x = moveSpeed;
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            newVelocity.x = -moveSpeed;
-        }
-
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            if (fuel > 0)
-            {
-                isJumping = true;
-                newVelocity.y = moveSpeed;
-                fuel -= 5;
-            }
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            if (fuel > 0)
-            {
-                isJumping = true;
-                newVelocity.y = -moveSpeed;
-                fuel -= 5;
-            }
-        }
-        else
-        {
-            isJumping = false;
-        }
-
-        Debug.Log("Fuel: " + fuel + " Jumping: " + isJumping);
-
         if (!isJumping && !isAboveMaxFuel)
         {
             fuel += 5;
         }
 
+        if (isJumping)
+        {
+            fuel -= 5;
+        }
+
+    }
+
+    void Move()
+    {
+        Vector2 newVelocity = Vector2.zero;
+
+        newVelocity.x = moveSpeed * moveDirectionH;
+
+        
+
+        if (isJumping && fuel > 0)
+        {
+            newVelocity.y = moveSpeed * moveDirectionV;
+        } 
+        
+        
 
         rb.velocity = newVelocity;
+    }
+
+    void GetInput()
+    {
+        moveDirectionH = Input.GetAxis("Horizontal");
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+        {
+            isJumping = true;
+            moveDirectionV = Input.GetAxis("Vertical");
+        }
+        else
+        {
+            isJumping = false;
+        }
     }
 }
