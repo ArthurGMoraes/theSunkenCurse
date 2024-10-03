@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,225 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: props_0
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 240
+        width: 242
+        height: 186
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70b914980c7357840a44f60146d10f0b
+      internalID: -1944588649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: planta1
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 112
+        width: 58
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd350f2a653a2494dbcf757be358534a
+      internalID: 1384009458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: planta2
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 113
+        width: 69
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04da3fbd1f2c9f04abba8b8d7e037c00
+      internalID: -2084443268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: planta3
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 112
+        width: 58
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02d7d767e6a4dcd489152020255ac654
+      internalID: 593781316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: totemClean
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 223
+        width: 102
+        height: 234
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d741868a4f1482448ed5f462b8ae98b
+      internalID: -2119943496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: totemAged
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 223
+        width: 123
+        height: 241
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a19929f84815614b82bf8e4147c8d3a
+      internalID: 1928388841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arco1
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 255
+        width: 232
+        height: 221
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb532fa56ec39644d85c4bb5432a2c50
+      internalID: 1374467740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toco1
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 299
+        width: 95
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e69d1e6dcf3ff764bbaf1d5403e7a0bb
+      internalID: -1995240267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arcodir
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 13
+        width: 108
+        height: 217
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -54, y: -108.5}
+        - {x: -39.545288, y: 16.721146}
+        - {x: 54, y: 108.5}
+        - {x: 54, y: -108.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e52a8bbdc0fbcbc4a831d88019324260
+      internalID: 608423865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arcoesq
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 12
+        width: 143
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -71.5, y: -116}
+        - {x: -71.5, y: 112.29793}
+        - {x: 71.5, y: 94.459274}
+        - {x: 14.5, y: -86}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 426e683a471476945883c8878d388235
+      internalID: 1195925561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +337,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      arco1: 1374467740
+      arco2: -1058206036
+      arcodir: 608423865
+      arcoesq: 1195925561
+      planta1: 24751054
+      planta2: -2084443268
+      planta3: 593781316
+      props_0: -1944588649
+      toco1: -1995240267
+      totemAged: 1928388841
+      totemClean: -2119943496
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

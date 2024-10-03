@@ -256,6 +256,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: parede
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 560
+        width: 60
+        height: 81
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 1, z: 0, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3526ce7922d3d58478eb05e17d03b64f
+      internalID: -261929911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: edge2
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 385
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e6e97e6d85a664468ac4fd6205d52ea
+      internalID: -1749920539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: edge4
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 221
+        width: 112
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80aa007dca0f70d45bed02ba20c05b48
+      internalID: 1727537103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -268,9 +331,12 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       edge1: -202248758
+      edge2: -1749920539
       edge3: 219164082
+      edge4: 1727537103
       floor: -646338540
       floor2: -1248014633
+      parede: -261929911
       parede1: 1941984440
       parede2: 394535515
       teto: -1135779701
