@@ -37,11 +37,14 @@ public class PlayerMovement : MonoBehaviour
     {
         GetInput();
 
+        Animate();
+    }
+
+    private void FixedUpdate()
+    {
         Move();
 
         FuelUpdate();
-
-        Animate();
     }
 
     void FlipCharacter()
