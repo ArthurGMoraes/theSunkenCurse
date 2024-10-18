@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
             FlipCharacter();
         }
 
-        animator.SetBool("isJumping", isJumping);
+        //animator.SetBool("isJumping", isJumping);
     }
 
     void FuelUpdate()
@@ -76,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
         if (fuel >= maxFuel)
         {
             isAboveMaxFuel = true;
+            fuel = maxFuel;
         }
         else
         {
@@ -90,6 +91,10 @@ public class PlayerMovement : MonoBehaviour
         if (isJumping)
         {
             fuel -= useFuel;
+            if (fuel <= 0)
+            {
+                fuel = 0;
+            }
         }
 
     }
@@ -106,8 +111,6 @@ public class PlayerMovement : MonoBehaviour
         {
             newVelocity.y = moveSpeed * moveDirectionV;
         } 
-        
-        
 
         rb.velocity = newVelocity;
     }
@@ -115,10 +118,10 @@ public class PlayerMovement : MonoBehaviour
     void GetInput()
     {
         moveDirectionH = Input.GetAxis("Horizontal");
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+        moveDirectionV = Input.GetAxis("Vertical");
+        if (moveDirectionV != 0)
         {
             isJumping = true;
-            moveDirectionV = Input.GetAxis("Vertical");
         }
         else
         {
