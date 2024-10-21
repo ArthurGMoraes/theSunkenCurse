@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
 
     public float fuel;
     public float maxFuel;
+    public float addFuel = 5;
+    public float useFuel = 5;
 
     [SerializeField]
     private Slider fuelSlider;
@@ -82,12 +84,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (!isJumping && !isAboveMaxFuel)
         {
-            fuel += 5;
+            fuel += addFuel;
         }
 
         if (isJumping)
         {
-            fuel -= 5;
+            fuel -= useFuel;
         }
 
     }
