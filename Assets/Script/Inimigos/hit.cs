@@ -7,12 +7,22 @@ public class hit : MonoBehaviour
     public int damage = 1;
     public PlayerHealth playerHealth;
     public Transform target;
+    public PlayerMovement playerMovement;
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.transform == target)
         {
+            playerMovement.KbCounter = playerMovement.KbTime;
+            if(collision.gameObject.transform.position.x <= transform.position.x)
+            {
+                playerMovement.KnockFromRight = true;
+            }
+            if (collision.gameObject.transform.position.x > transform.position.x)
+            {
+                playerMovement.KnockFromRight = false;
+            }
             playerHealth.TakeDamage(damage);
         }
     }

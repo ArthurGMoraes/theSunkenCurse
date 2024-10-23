@@ -3690,6 +3690,10 @@ MonoBehaviour:
   addFuel: 4
   useFuel: 7
   fuelSlider: {fileID: 953458946}
+  KbForce: 2.3
+  KbCounter: 0
+  KbTime: 0.5
+  KnockFromRight: 0
 --- !u!50 &737405457
 Rigidbody2D:
   serializedVersion: 4
@@ -3883,7 +3887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  health: 4
+  health: 10
 --- !u!1 &747924717
 GameObject:
   m_ObjectHideFlags: 0
@@ -6392,7 +6396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
-  dist: 0
+  dist: 4
   target: {fileID: 737405461}
 --- !u!114 &1179382326
 MonoBehaviour:
@@ -6409,6 +6413,7 @@ MonoBehaviour:
   damage: 1
   playerHealth: {fileID: 737405465}
   target: {fileID: 737405461}
+  playerMovement: {fileID: 737405456}
 --- !u!1 &1189361740
 GameObject:
   m_ObjectHideFlags: 0

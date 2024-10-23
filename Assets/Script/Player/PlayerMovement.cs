@@ -26,6 +26,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Slider fuelSlider;
 
+    public float KbForce;
+    public float KbCounter;      //tempo restante
+    public float KbTime;         // duracao     
+    public bool KnockFromRight;  // direcao
+
+    // time 0.5 kb 2.3 parece debaixo dágue
+    // time 0.2 kb 5 fica bom mas acho que nao combina com o tema
+
     private float currentFuel;
     // Called after all objects are initialized
     void Start()
@@ -101,18 +109,34 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        Vector2 newVelocity = Vector2.zero;
-
-        newVelocity.x = moveSpeed * moveDirectionH;
-
-        
-
-        if (isJumping && fuel > 0)
+        if (KbCounter <= 0)
         {
-            newVelocity.y = moveSpeed * moveDirectionV;
-        } 
+            Vector2 newVelocity = Vector2.zero;
 
-        rb.velocity = newVelocity;
+            newVelocity.x = moveSpeed * moveDirectionH;
+
+
+
+            if (isJumping && fuel > 0)
+            {
+                newVelocity.y = moveSpeed * moveDirectionV;
+            }
+
+            rb.velocity = newVelocity;
+            KbCounter = 0;
+        }  
+        else
+        {
+            if (KnockFromRight == true)
+            {
+                rb.velocity = new Vector2(-KbForce, KbForce);
+            }
+            if (KnockFromRight == false)
+            {
+                rb.velocity = new Vector2(KbForce, KbForce);
+            }
+            KbCounter -= Time.deltaTime;
+        }
     }
 
     void GetInput()
