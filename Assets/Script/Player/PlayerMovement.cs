@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed;
-    public float jumpForce;
+    public float moveSpeed = 2;
+    public float jumpForce = 10;
     private float moveDirectionH;
     private float moveDirectionV;
     private bool facingRight = true;
@@ -18,10 +18,10 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping = false;
     private bool isAboveMaxFuel = false;
 
-    public float fuel;
-    public float maxFuel;
-    public float addFuel = 5;
-    public float useFuel = 5;
+    public float fuel = 0;
+    public float maxFuel = 1000;
+    public float addFuel = 7;
+    public float useFuel = 10;
 
     [SerializeField]
     private Slider fuelSlider;
@@ -31,10 +31,11 @@ public class PlayerMovement : MonoBehaviour
     public float KbTime;         // duracao     
     public bool KnockFromRight;  // direcao
 
-    // time 0.5 kb 2.3 parece debaixo dágue
+    public float upgradeValue = 1.75f;
+
+    // time 0.5 kb 2.3 parece debaixo dï¿½gue
     // time 0.2 kb 5 fica bom mas acho que nao combina com o tema
 
-    private float currentFuel;
     // Called after all objects are initialized
     void Start()
     {
@@ -119,12 +120,12 @@ public class PlayerMovement : MonoBehaviour
 
             if (isJumping && fuel > 0)
             {
-                newVelocity.y = moveSpeed * moveDirectionV;
+                newVelocity.y = (moveSpeed * moveDirectionV) * upgradeValue;
             }
 
             rb.velocity = newVelocity;
             KbCounter = 0;
-        }  
+        }
         else
         {
             if (KnockFromRight == true)
