@@ -9,6 +9,7 @@ public class HabilidadeManager : MonoBehaviour
     public Transform painelHabilidades; // Referência ao painel onde os botões serão exibidos
     private ListaDeAdjacencia lista;
 
+    public UpgradeManager upgradeManager;
     void Start()
     {
         lista = new ListaDeAdjacencia(100);
@@ -89,17 +90,21 @@ public class HabilidadeManager : MonoBehaviour
     }
 
     private void ComprarHabilidade(int indice)
+{
+    if (lista.IsCompravel(indice))
     {
-        // Aqui você pode adicionar a lógica para comprar a habilidade
-        if (lista.IsCompravel(indice))
-        {
-            int preco = lista.Comprar(indice);
-            Debug.Log($"Comprou a habilidade: {lista.GetCelula(indice).Nome} por {preco} moedas.");
-            ExibirHabilidades(); // Atualiza a lista de habilidades disponíveis
-        }
-        else
-        {
-            Debug.Log($"A habilidade {lista.GetCelula(indice).Nome} não pode ser comprada ainda.");
-        }
+        int preco = lista.Comprar(indice);
+        Debug.Log($"Comprou a habilidade: {lista.GetCelula(indice).Nome} por {preco} moedas.");
+
+        // Aplicar o upgrade ao jogador
+        lista.GetCelula(indice).AplicarUpgrade(upgradeManager);
+
+        ExibirHabilidades(); // Atualiza a lista de habilidades disponíveis
     }
+    else
+    {
+        Debug.Log($"A habilidade {lista.GetCelula(indice).Nome} não pode ser comprada ainda.");
+    }
+}
+
 }

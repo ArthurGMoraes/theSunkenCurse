@@ -49,6 +49,37 @@ public class Celula
         return Preco;
     }
 
+    public void AplicarUpgrade(UpgradeManager upgradeManager)
+    {
+        switch (Nome)
+        {
+            // case "Jetpack Speed I":
+            //     upgradeManager.ApplyJetpackSpeedUpgrade(1.2f); // Aumenta a velocidade do jetpack em 20%
+            //     break;
+            // case "Jetpack Speed II":
+            //     upgradeManager.ApplyJetpackSpeedUpgrade(1.3f); // Aumenta a velocidade do jetpack em 30%
+            //     break;
+            // case "Jetpack Speed III":
+            //     upgradeManager.ApplyJetpackSpeedUpgrade(1.4f); // Aumenta a velocidade do jetpack em 40%
+            //     break;
+            case "Jetpack Fuel I":
+                upgradeManager.ApplyMaxFuelUpgrade(1.5f); // Aumenta o combustível máximo em 50%
+                break;
+            case "Jetpack Fuel II":
+                upgradeManager.ApplyMaxFuelUpgrade(2f); // Aumenta o combustível máximo em 100%
+                break;
+            // case "Health I":
+            //     upgradeManager.ApplyHealthUpgrade(20); // Aumenta a saúde em 20
+            //     break;
+            // case "Health II":
+            //     upgradeManager.ApplyHealthUpgrade(50); // Aumenta a saúde em 50
+            //     break;
+            // Adicione mais casos conforme necessário
+            default:
+                break;
+        }
+    }
+
     public override string ToString()
     {
         return $"{Vertice} {Preco} {Nome}";

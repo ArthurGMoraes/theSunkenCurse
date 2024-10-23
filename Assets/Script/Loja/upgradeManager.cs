@@ -14,28 +14,14 @@ public class UpgradeManager : MonoBehaviour
         playerHealth = player.GetComponent<PlayerHealth>();
     }
 
-    // Exemplo de método para aplicar um upgrade
-    public void ApplySpeedUpgrade(float speedIncrease)
-    {
-        playerMovement.moveSpeed = playerMovement.moveSpeed * speedIncrease;
-        Debug.Log("Nova velocidade de movimento: " + playerMovement.moveSpeed);
-    }
-
-    public void ApplyJetpackSpeedUpgrade(float speedIncrease)
-    {
-        playerMovement.moveSpeed = playerMovement.moveSpeed * speedIncrease;
-        Debug.Log("Nova velocidade de movimento: " + playerMovement.moveSpeed);
-    }
 
     public void ApplyMaxFuelUpgrade(float fuelIncrease)
     {
-        playerMovement.maxFuel = playerMovement.maxFuel * fuelIncrease;
-        Debug.Log("Nova velocidade de movimento: " + playerMovement.maxFuel);
+        playerMovement.maxFuel *= fuelIncrease; // Supondo que você tenha uma variável maxFuel
+        Debug.Log("Novo combustível máximo: " + playerMovement.maxFuel);
     }
 
-    public void ApplyHealthUpgrade(int healthIncrease)
-    {
-        playerHealth.ModifyHealth(healthIncrease);
-        Debug.Log("Nova saúde do jogador: " + playerHealth.health);
-    }
+    
+
+    
 }
