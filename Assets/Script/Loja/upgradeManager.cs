@@ -7,6 +7,10 @@ public class UpgradeManager : MonoBehaviour
     private PlayerMovement playerMovement;
     private PlayerHealth playerHealth;
 
+    [SerializeField] GameObject Panel;
+    private bool loja = true;
+    private PauseMenu pauseMenu;
+
     private void Start()
     {
         // Obtendo as referências aos componentes
@@ -21,7 +25,26 @@ public class UpgradeManager : MonoBehaviour
         Debug.Log("Novo combustível máximo: " + playerMovement.maxFuel);
     }
 
-    
+    private void Update()
+    {
 
-    
+        if (Input.GetKeyDown("e"))
+        {
+            Panel.SetActive(loja);
+
+            if (loja == false)
+            {
+                Time.timeScale = 1;
+            }
+            else
+            {
+                Time.timeScale = 0;
+            }
+
+            loja = loja ^ true;
+        }
+    }
+
+
+
 }
