@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
+    private bool isDead;
+
+    public GameManager gameManager;
     public int maxHealth = 10;
     public int health;
 
@@ -21,8 +24,11 @@ public class PlayerHealth : MonoBehaviour
         OnPlayerDamaged?.Invoke();
         if (health <= 0)
         {
+            isDead = true;
             health = 0;
             Debug.Log("You're dead");
+            Time.timeScale = 0;
+            gameManager.gameOver();
             OnPlayerDeath?.Invoke();
         }
     }
