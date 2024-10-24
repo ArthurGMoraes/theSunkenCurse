@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class chase : MonoBehaviour
 {
+    private Rigidbody2D rb;
     public float speed;
     public float dist;
     public Transform target;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         SetTarget();
     }
 
