@@ -30,7 +30,8 @@ public class HabilidadeManager : MonoBehaviour
         lista.AdicionarUpgrade("Health II", 150); // Depende de Health I e Jetpack Speed II
         lista.AdicionarUpgrade("Damage I", 75);
         lista.AdicionarUpgrade("Damage II", 150); // Depende de Damage I e Health II
-
+        lista.AdicionarUpgrade("Jetpack Refil I", 100);
+        lista.AdicionarUpgrade("Jetpack Refil II", 200);
         // Definindo as dependências
         lista.AddAresta(0, 1); // Upgrade 1 -> Jetpack Speed I
         lista.AddAresta(1, 2); // Jetpack Speed I -> Jetpack Speed II
@@ -45,6 +46,10 @@ public class HabilidadeManager : MonoBehaviour
         lista.AddAresta(2, 7); // Jetpack Speed II -> Health II (2 dependências)
         lista.AddAresta(0, 8); // Upgrade 1 -> Damage I
         lista.AddAresta(8, 9); // Damage I -> Damage II
+        lista.AddAresta(1, 10); // Jetpack Speed I -> Jetpack Refil I
+        lista.AddAresta(4, 10); // Jetpack Fuel I -> Jetpack Refil I
+        lista.AddAresta(2, 11);// Jetpack Speed II -> Jetpack Refil II
+        lista.AddAresta(5, 11); // Jetpack Fuel II -> Jetpack Refil II
     }
 
     private void ExibirHabilidades()

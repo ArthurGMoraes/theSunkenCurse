@@ -62,18 +62,24 @@ public class Celula
             // case "Jetpack Speed III":
             //     upgradeManager.ApplyJetpackSpeedUpgrade(1.4f); // Aumenta a velocidade do jetpack em 40%
             //     break;
-            case "Jetpack Fuel I":
-                upgradeManager.ApplyMaxFuelUpgrade(1.5f); // Aumenta o combustível máximo em 50%
-                break;
-            case "Jetpack Fuel II":
-                upgradeManager.ApplyMaxFuelUpgrade(2f); // Aumenta o combustível máximo em 100%
-                break;
-            // case "Health I":
-            //     upgradeManager.ApplyHealthUpgrade(20); // Aumenta a saúde em 20
-            //     break;
-            // case "Health II":
-            //     upgradeManager.ApplyHealthUpgrade(50); // Aumenta a saúde em 50
-            //     break;
+             case "Jetpack Fuel I":
+                 upgradeManager.ApplyMaxFuelUpgrade(1.5f); // Aumenta o combustível máximo em 50%
+                 break;
+             case "Jetpack Fuel II":
+                 upgradeManager.ApplyMaxFuelUpgrade(2f); // Aumenta o combustível máximo em 100%
+                 break;
+             case "Health I":
+                 upgradeManager.ApplyHealthUpgrade(1); // Aumenta a saúde em 20
+                 break;
+             case "Health II":
+                 upgradeManager.ApplyHealthUpgrade(5); // Aumenta a saúde em 50
+                 break;
+             case "Jetpack Refil I":
+                 upgradeManager.ApplyRefilUpgrade(2); // Aumenta o combustível máximo em 50%
+                 break;
+             case "Jetpack Refil II":
+                 upgradeManager.ApplyRefilUpgrade(4); // Aumenta o combustível máximo em 50%
+                 break;        
             // Adicione mais casos conforme necessário
             default:
                 break;
