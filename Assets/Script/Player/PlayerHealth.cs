@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
+    public GameManager gameManager;
+
+    private bool isDead;
     public int maxHealth = 10;
     public int health;
 
@@ -13,16 +16,21 @@ public class PlayerHealth : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-       health = maxHealth;
+    {       
+        health = maxHealth;
     }
-    public void TakeDamage(int dmg){
+
+    public void TakeDamage(int dmg)
+    {
         health -= dmg;
         OnPlayerDamaged?.Invoke();
-        if (health <= 0)
+        if (health <= 0 && !isDead)
         {
+            isDead = true;
             health = 0;
             Debug.Log("You're dead");
+            Time.timeScale = 0;
+            gameManager.gameOver();
             OnPlayerDeath?.Invoke();
         }
     }
