@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "TI4.sln"
+    "dotnet.defaultSolution": "theSunkenCurse.sln"
 }
