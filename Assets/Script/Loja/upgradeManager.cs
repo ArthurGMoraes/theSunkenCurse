@@ -4,8 +4,8 @@ public class UpgradeManager : MonoBehaviour
 {
     public GameObject player; // Arraste o objeto do jogador no Inspector
 
-    private PlayerMovement playerMovement;
-    private PlayerHealth playerHealth;
+    public PlayerMovement playerMovement;
+    public PlayerHealth playerHealth;
 
     [SerializeField] GameObject Panel;
     private bool loja = true;
@@ -14,8 +14,8 @@ public class UpgradeManager : MonoBehaviour
     private void Start()
     {
         // Obtendo as referências aos componentes
-        playerMovement = player.GetComponent<PlayerMovement>();
-        playerHealth = player.GetComponent<PlayerHealth>();
+        //playerMovement = player.GetComponent<PlayerMovement>();
+        //playerHealth = player.GetComponent<PlayerHealth>();
     }
 
 
