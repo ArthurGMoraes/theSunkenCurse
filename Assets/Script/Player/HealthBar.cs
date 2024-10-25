@@ -7,6 +7,7 @@ public class HealthBar : MonoBehaviour
 {
     public GameObject CoracaoPrefab;
     public PlayerHealth playerHealth;
+    public UpgradeManager upgradeManager;
     List<Heart> hearts = new List<Heart>();
 
     private void Start()
@@ -54,12 +55,14 @@ public class HealthBar : MonoBehaviour
     private void OnEnable()
     {
         PlayerHealth.OnPlayerDamaged += DrawHearts;
+        UpgradeManager.onUpgrade += DrawHearts;
     }
 
     private void OnDisable()
     {
         PlayerHealth.OnPlayerDamaged -= DrawHearts;
+        UpgradeManager.onUpgrade -= DrawHearts;
     }
-
-
 }
+
+

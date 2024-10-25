@@ -25,15 +25,15 @@ public class chase : MonoBehaviour
         if (target == null)
             return;
 
-        //rotate to look at the player
-        transform.LookAt(target.position);
-        transform.Rotate(new Vector3(0, -90, 0), Space.Self);//correcting the original rotation
+        // Rotate to look at the player
+        Vector3 direction = (target.position - transform.position).normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        rb.rotation = angle;
 
-
-        //move towards the player
+        // Move towards the player
         if (Vector3.Distance(transform.position, target.position) < dist)
         {
-            transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+            rb.MovePosition(transform.position + direction * speed * Time.fixedDeltaTime);
         }
     }
 

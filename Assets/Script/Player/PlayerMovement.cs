@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveDirectionH;
     private float moveDirectionV;
     private bool facingRight = true;
+    private bool facingUp = true;
     public Animator animator;
 
     private Rigidbody2D rb;
@@ -18,10 +19,10 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping = false;
     private bool isAboveMaxFuel = false;
 
-    public float fuel = 0;
-    public float maxFuel = 1000;
-    public float addFuel = 7;
-    public float useFuel = 10;
+    public float fuel = 1000;
+    public float maxFuel = 2000;
+    public float addFuel = 4;
+    public float useFuel = 7;
 
     [SerializeField]
     private Slider fuelSlider;
@@ -31,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     public float KbTime;         // duracao     
     public bool KnockFromRight;  // direcao
 
-    public float upgradeValue = 1.75f;
+    public float upgradeValue = 1.00f;
 
     // time 0.5 kb 2.3 parece debaixo d�gue
     // time 0.2 kb 5 fica bom mas acho que nao combina com o tema
@@ -64,6 +65,18 @@ public class PlayerMovement : MonoBehaviour
         transform.Rotate(0f, 180f, 0f);
     }
 
+    void rotateCharacter()
+    {
+        facingUp = !facingUp;
+        transform.Rotate(180f, 0f, 0f);
+    }
+
+    private void ResetRotation()
+    {
+        facingUp = true;
+        transform.rotation = Quaternion.Euler(180, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+    }
+
     void Animate()
     {
         if (facingRight && moveDirectionH < 0)
@@ -75,7 +88,27 @@ public class PlayerMovement : MonoBehaviour
             FlipCharacter();
         }
 
-        //animator.SetBool("isJumping", isJumping);
+        if (moveDirectionV != 0)
+        {
+            if (facingUp && moveDirectionV < 0)
+            {
+                rotateCharacter();
+            }
+            else if (!facingUp && moveDirectionV > 0)
+            {
+                rotateCharacter();
+            }
+        }
+        else if (facingUp == false)
+        {
+            ResetRotation();
+        }
+           
+        
+        
+        
+
+        animator.SetBool("isJumping", isJumping);
     }
 
     void FuelUpdate()

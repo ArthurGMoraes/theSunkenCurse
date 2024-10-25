@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class UpgradeManager : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] GameObject Panel;
     private bool loja = true;
     private PauseMenu pauseMenu;
- 
+
+    public static event Action onUpgrade;
+
 
     private void Start()
     {
@@ -39,7 +42,8 @@ public class UpgradeManager : MonoBehaviour
         if (player != null)
         {
         playerHealth.maxHealth += healthIncrease;
-        playerHealth.health = playerHealth.maxHealth; 
+        playerHealth.health = playerHealth.maxHealth;
+        onUpgrade?.Invoke();
         Debug.Log("Novo combustível máximo: " + playerMovement.maxFuel);
         }
     }

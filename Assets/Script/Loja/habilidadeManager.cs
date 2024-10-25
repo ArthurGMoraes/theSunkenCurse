@@ -85,12 +85,18 @@ public class HabilidadeManager : MonoBehaviour
 
     private void AjustarDisposicaoBotoes()
     {
-        // Define o layout horizontal se os botões estiverem em um layout vertical
+        // Obtém o componente HorizontalLayoutGroup
         HorizontalLayoutGroup layoutGroup = painelHabilidades.GetComponent<HorizontalLayoutGroup>();
+
         if (layoutGroup != null)
         {
+            // Configura o layout para centralizar os botões
             layoutGroup.childControlWidth = true;
             layoutGroup.childForceExpandWidth = false;
+            layoutGroup.childAlignment = TextAnchor.MiddleCenter; // Centraliza os botões no layout
+
+            // Optional: Set spacing between buttons if needed
+            layoutGroup.spacing = 10; // Adjust spacing as desired
         }
     }
 
