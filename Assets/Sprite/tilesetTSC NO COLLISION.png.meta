@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1bc9de8124aff294f9c9e83206a17fc3
+guid: 72194560667a5e344807cc9dabd76b9c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,11 +93,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tilesetTSC_0
+      name: tilesetTSC NO COLLISION_0
       rect:
         serializedVersion: 2
         x: 16
@@ -111,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54d147aa4c4869245b261658a11181f9
-      internalID: -1689307458
+      spriteID: 8e547fab1341721489c40c3c24bd1a9e
+      internalID: -1752800165
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tilesetTSC_1
+      name: tilesetTSC NO COLLISION_1
       rect:
         serializedVersion: 2
         x: 112
@@ -132,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d9ad547d077bf14daa28ae8096f5a10
-      internalID: -1261824437
+      spriteID: a3708323826d4274fa3e18eb020211de
+      internalID: 404236345
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tilesetTSC_2
+      name: tilesetTSC NO COLLISION_2
       rect:
         serializedVersion: 2
         x: 205
@@ -153,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54b66159e8cf9fd4993f5034bcbc579c
-      internalID: 61603519
+      spriteID: dd6b05945fa0ea1468879725d18ee646
+      internalID: -1159275889
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tilesetTSC_3
+      name: tilesetTSC NO COLLISION_3
       rect:
         serializedVersion: 2
         x: 308
@@ -174,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65bf1d2be2158334982941f4413297d3
-      internalID: -768684994
+      spriteID: cc4c44bbe3536d646b3d74cd5f8ca224
+      internalID: 423283753
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tilesetTSC_4
+      name: tilesetTSC NO COLLISION_4
       rect:
         serializedVersion: 2
         x: 24
@@ -195,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7924d9206612414397a7573efb968e1
-      internalID: -816906092
+      spriteID: 542e273d19b8d2f49843d015aaaf1c98
+      internalID: -1743591633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tilesetTSC_5
+      name: tilesetTSC NO COLLISION_5
       rect:
         serializedVersion: 2
         x: 110
@@ -216,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6a9cdb505866d84eb57ec87edc0f083
-      internalID: 639593704
+      spriteID: fe18d7c51d7161849a3b4945861e9768
+      internalID: -1654126097
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tilesetTSC_6
+      name: tilesetTSC NO COLLISION_6
       rect:
         serializedVersion: 2
         x: 16
@@ -237,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46a1d6207c97a594fa6199fe67e97c0b
-      internalID: -1692307076
+      spriteID: 656ba9d9bbd7bb94b944c046bed0c604
+      internalID: 233276569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tilesetTSC_7
+      name: tilesetTSC NO COLLISION_7
       rect:
         serializedVersion: 2
         x: 112
@@ -258,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c8d6ae51db89594ba289a14e1b1b70a
-      internalID: -1986161398
+      spriteID: 92a795c6c086f9b4e938c531ac3743a6
+      internalID: 1433215829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tilesetTSC_8
+      name: tilesetTSC NO COLLISION_8
       rect:
         serializedVersion: 2
         x: 205
@@ -279,8 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67d77b47e7266f547b8b11f7fc504a9c
-      internalID: -398305759
+      spriteID: 46aebf1c0bcf205429b42d0ab9446a03
+      internalID: 1110259605
       vertices: []
       indices: 
       edges: []
@@ -296,15 +309,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tilesetTSC_0: -1689307458
-      tilesetTSC_1: -1261824437
-      tilesetTSC_2: 61603519
-      tilesetTSC_3: -768684994
-      tilesetTSC_4: -816906092
-      tilesetTSC_5: 639593704
-      tilesetTSC_6: -1692307076
-      tilesetTSC_7: -1986161398
-      tilesetTSC_8: -398305759
+      tilesetTSC NO COLLISION_0: -1752800165
+      tilesetTSC NO COLLISION_1: 404236345
+      tilesetTSC NO COLLISION_2: -1159275889
+      tilesetTSC NO COLLISION_3: 423283753
+      tilesetTSC NO COLLISION_4: -1743591633
+      tilesetTSC NO COLLISION_5: -1654126097
+      tilesetTSC NO COLLISION_6: 233276569
+      tilesetTSC NO COLLISION_7: 1433215829
+      tilesetTSC NO COLLISION_8: 1110259605
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
