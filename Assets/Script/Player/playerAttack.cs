@@ -8,6 +8,9 @@ public class playerAttack : MonoBehaviour
     public float raio;
     public LayerMask enemies;
 
+    public float attackRate;
+    float attackTime = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,10 +20,16 @@ public class playerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Time.time >= attackTime)
         {
-            attack(1);
+            if (Input.GetMouseButtonDown(0))
+            {
+                attack(1);
+                attackTime = Time.time + 1f /attackRate;
+                //Debug.Log("re");
+            }
         }
+        
     }
 
     public void attack(int dmg)
@@ -32,6 +41,7 @@ public class playerAttack : MonoBehaviour
             if (health != null)
             {
                 health.TakeDamage(dmg);
+                Debug.Log("receba");
             }
         }
     }
