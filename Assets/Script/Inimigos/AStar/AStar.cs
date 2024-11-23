@@ -1,83 +1,148 @@
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Tilemaps;
 
-public class Pathfinding : MonoBehaviour {
+public class AStarPathfinding : MonoBehaviour
+{
+    public Transform player;
+    public Tilemap collisionTilemap;
+    public Vector2Int gridSize;
 
-	public Transform seeker, target;
-	Grid grid;
+    private Vector2Int[] directions = { new Vector2Int(1, 0), new Vector2Int(-1, 0), new Vector2Int(0, 1), new Vector2Int(0, -1) };
 
-	void Awake() {
-		grid = GetComponent<Grid> ();
-	}
+    public class Node
+    {
+        public Vector2Int position;
+        public int gCost;
+        public int hCost;
+        public Node parent;
 
-	void Update() {
-		FindPath (seeker.position, target.position);
-	}
+        public int fCost => gCost + hCost;
 
-	void FindPath(Vector3 startPos, Vector3 targetPos) {
-		Node startNode = grid.NodeFromWorldPoint(startPos);
-		Node targetNode = grid.NodeFromWorldPoint(targetPos);
+        public Node(Vector2Int position) { this.position = position; }
+    }
 
-		List<Node> openSet = new List<Node>();
-		HashSet<Node> closedSet = new HashSet<Node>();
-		openSet.Add(startNode);
+    void Start()
+    {
+        // Initialize grid size based on tilemap bounds
+        BoundsInt bounds = collisionTilemap.cellBounds;
+        gridSize = new Vector2Int(bounds.size.x, bounds.size.y);
+    }
 
-		while (openSet.Count > 0) {
-			Node node = openSet[0];
-			for (int i = 1; i < openSet.Count; i ++) {
-				if (openSet[i].fCost < node.fCost || openSet[i].fCost == node.fCost) {
-					if (openSet[i].hCost < node.hCost)
-						node = openSet[i];
-				}
-			}
+    public List<Vector2Int> FindPath(Vector2Int start, Vector2Int target)
+    {
+        Debug.Log($"Finding path from {start} to {target}");
+        
+        // Validate start and target positions
+        if (!IsValidPosition(start))
+        {
+            Debug.LogError($"Invalid start position: {start}");
+            return new List<Vector2Int>();
+        }
+        
+        if (!IsValidPosition(target))
+        {
+            Debug.LogError($"Invalid target position: {target}");
+            return new List<Vector2Int>();
+        }
 
-			openSet.Remove(node);
-			closedSet.Add(node);
+        List<Node> openList = new List<Node>();
+        HashSet<Vector2Int> closedList = new HashSet<Vector2Int>();
+        
+        Node startNode = new Node(start);
+        startNode.gCost = 0;
+        startNode.hCost = CalculateHeuristic(start, target);
+        
+        openList.Add(startNode);
 
-			if (node == targetNode) {
-				RetracePath(startNode,targetNode);
-				return;
-			}
+        while (openList.Count > 0)
+        {
+            Node currentNode = FindLowestFCostNode(openList);
+            openList.Remove(currentNode);
 
-			foreach (Node neighbour in grid.GetNeighbours(node)) {
-				if (!neighbour.walkable || closedSet.Contains(neighbour)) {
-					continue;
-				}
+            if (currentNode.position == target)
+            {
+                Debug.Log("Path found!");
+                return ReconstructPath(currentNode);
+            }
 
-				int newCostToNeighbour = node.gCost + GetDistance(node, neighbour);
-				if (newCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour)) {
-					neighbour.gCost = newCostToNeighbour;
-					neighbour.hCost = GetDistance(neighbour, targetNode);
-					neighbour.parent = node;
+            closedList.Add(currentNode.position);
 
-					if (!openSet.Contains(neighbour))
-						openSet.Add(neighbour);
-				}
-			}
-		}
-	}
+            foreach (var direction in directions)
+            {
+                Vector2Int neighborPos = currentNode.position + direction;
+                
+                if (!IsValidPosition(neighborPos) || closedList.Contains(neighborPos))
+                    continue;
 
-	void RetracePath(Node startNode, Node endNode) {
-		List<Node> path = new List<Node>();
-		Node currentNode = endNode;
+                int tentativeGCost = currentNode.gCost + 1;
 
-		while (currentNode != startNode) {
-			path.Add(currentNode);
-			currentNode = currentNode.parent;
-		}
-		path.Reverse();
+                Node neighborNode = openList.Find(n => n.position == neighborPos);
+                if (neighborNode == null)
+                {
+                    neighborNode = new Node(neighborPos);
+                    neighborNode.gCost = tentativeGCost;
+                    neighborNode.hCost = CalculateHeuristic(neighborPos, target);
+                    neighborNode.parent = currentNode;
+                    openList.Add(neighborNode);
+                }
+                else if (tentativeGCost < neighborNode.gCost)
+                {
+                    neighborNode.parent = currentNode;
+                    neighborNode.gCost = tentativeGCost;
+                }
+            }
+        }
 
-		grid.path = path;
+        Debug.LogWarning("No path found!");
+        return new List<Vector2Int>();
+    }
 
-	}
+    private int CalculateHeuristic(Vector2Int start, Vector2Int end)
+    {
+        return Mathf.Abs(start.x - end.x) + Mathf.Abs(start.y - end.y);
+    }
 
-	int GetDistance(Node nodeA, Node nodeB) {
-		int dstX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
-		int dstY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
+    private Node FindLowestFCostNode(List<Node> nodes)
+    {
+        Node lowest = nodes[0];
+        for (int i = 1; i < nodes.Count; i++)
+        {
+            if (nodes[i].fCost < lowest.fCost)
+                lowest = nodes[i];
+        }
+        return lowest;
+    }
 
-		if (dstX > dstY)
-			return 14*dstY + 10* (dstX-dstY);
-		return 14*dstX + 10 * (dstY-dstX);
-	}
+    public bool IsValidPosition(Vector2Int cellPosition)
+    {
+        // Convert to Vector3Int for tilemap operations
+        Vector3Int tilePosition = new Vector3Int(cellPosition.x, cellPosition.y, 0);
+        
+        // Check if position is within tilemap bounds
+        if (!collisionTilemap.cellBounds.Contains(tilePosition))
+        {
+            return false;
+        }
+
+        // Check if there's a collision tile at this position
+        // Return true if there is NO collision tile (walkable space)
+        return !collisionTilemap.HasTile(tilePosition);
+    }
+
+    private List<Vector2Int> ReconstructPath(Node endNode)
+    {
+        List<Vector2Int> path = new List<Vector2Int>();
+        Node currentNode = endNode;
+        
+        while (currentNode != null)
+        {
+            path.Add(currentNode.position);
+            currentNode = currentNode.parent;
+        }
+        
+        path.Reverse();
+        Debug.Log($"Path found with {path.Count} nodes");
+        return path;
+    }
 }
