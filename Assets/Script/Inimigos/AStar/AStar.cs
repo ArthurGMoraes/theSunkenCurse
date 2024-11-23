@@ -8,7 +8,17 @@ public class AStarPathfinding : MonoBehaviour
     public Tilemap collisionTilemap;
     public Vector2Int gridSize;
 
-    private Vector2Int[] directions = { new Vector2Int(1, 0), new Vector2Int(-1, 0), new Vector2Int(0, 1), new Vector2Int(0, -1) };
+    // Added diagonal directions
+    private Vector2Int[] directions = {
+        new Vector2Int(1, 0),   // right
+        new Vector2Int(-1, 0),  // left
+        new Vector2Int(0, 1),   // up
+        new Vector2Int(0, -1),  // down
+        new Vector2Int(1, 1),   // up-right
+        new Vector2Int(-1, 1),  // up-left
+        new Vector2Int(1, -1),  // down-right
+        new Vector2Int(-1, -1)  // down-left
+    };
 
     public class Node
     {
@@ -24,7 +34,6 @@ public class AStarPathfinding : MonoBehaviour
 
     void Start()
     {
-        // Initialize grid size based on tilemap bounds
         BoundsInt bounds = collisionTilemap.cellBounds;
         gridSize = new Vector2Int(bounds.size.x, bounds.size.y);
     }
@@ -33,7 +42,6 @@ public class AStarPathfinding : MonoBehaviour
     {
         Debug.Log($"Finding path from {start} to {target}");
         
-        // Validate start and target positions
         if (!IsValidPosition(start))
         {
             Debug.LogError($"Invalid start position: {start}");
@@ -75,7 +83,22 @@ public class AStarPathfinding : MonoBehaviour
                 if (!IsValidPosition(neighborPos) || closedList.Contains(neighborPos))
                     continue;
 
-                int tentativeGCost = currentNode.gCost + 1;
+                // Calculate movement cost (1.4 for diagonal, 1 for cardinal directions)
+                float movementCost = direction.x != 0 && direction.y != 0 ? 1.4f : 1f;
+
+                // Check if diagonal movement is blocked by corner obstacles
+                if (movementCost > 1f)
+                {
+                    Vector2Int cornerCheck1 = new Vector2Int(currentNode.position.x + direction.x, currentNode.position.y);
+                    Vector2Int cornerCheck2 = new Vector2Int(currentNode.position.x, currentNode.position.y + direction.y);
+                    
+                    if (!IsValidPosition(cornerCheck1) || !IsValidPosition(cornerCheck2))
+                    {
+                        continue; // Skip this diagonal if corners are blocked
+                    }
+                }
+
+                int tentativeGCost = currentNode.gCost + Mathf.RoundToInt(movementCost * 10);
 
                 Node neighborNode = openList.Find(n => n.position == neighborPos);
                 if (neighborNode == null)
@@ -100,7 +123,10 @@ public class AStarPathfinding : MonoBehaviour
 
     private int CalculateHeuristic(Vector2Int start, Vector2Int end)
     {
-        return Mathf.Abs(start.x - end.x) + Mathf.Abs(start.y - end.y);
+        // Using Diagonal distance heuristic
+        int dx = Mathf.Abs(start.x - end.x);
+        int dy = Mathf.Abs(start.y - end.y);
+        return 10 * (dx + dy) + (14 - 2 * 10) * Mathf.Min(dx, dy);
     }
 
     private Node FindLowestFCostNode(List<Node> nodes)
@@ -108,25 +134,24 @@ public class AStarPathfinding : MonoBehaviour
         Node lowest = nodes[0];
         for (int i = 1; i < nodes.Count; i++)
         {
-            if (nodes[i].fCost < lowest.fCost)
+            if (nodes[i].fCost < lowest.fCost || 
+                (nodes[i].fCost == lowest.fCost && nodes[i].hCost < lowest.hCost))
+            {
                 lowest = nodes[i];
+            }
         }
         return lowest;
     }
 
     public bool IsValidPosition(Vector2Int cellPosition)
     {
-        // Convert to Vector3Int for tilemap operations
         Vector3Int tilePosition = new Vector3Int(cellPosition.x, cellPosition.y, 0);
         
-        // Check if position is within tilemap bounds
         if (!collisionTilemap.cellBounds.Contains(tilePosition))
         {
             return false;
         }
 
-        // Check if there's a collision tile at this position
-        // Return true if there is NO collision tile (walkable space)
         return !collisionTilemap.HasTile(tilePosition);
     }
 

@@ -9,13 +9,13 @@ public class EnemyMovement : MonoBehaviour
     public Tilemap collisionTilemap;
     public float moveSpeed = 2f;
     public float pathUpdateInterval = 0.5f;
-    public float rotationSpeed = 5f;    // Speed of rotation
+    public float rotationSpeed = 5f;
     
     private AStarPathfinding pathfinding;
     private List<Vector2Int> path;
     private int currentPathIndex = 0;
     private Rigidbody2D rb;
-    private Vector3 currentMoveDirection = Vector3.right; // Default direction
+    private Vector3 currentMoveDirection = Vector3.right;
 
     void Start()
     {
@@ -70,10 +70,6 @@ public class EnemyMovement : MonoBehaviour
                 currentPathIndex = 0;
                 Debug.Log($"New path found with {path.Count} nodes");
             }
-            else
-            {
-                Debug.LogWarning("No valid path found to player");
-            }
 
             yield return new WaitForSeconds(pathUpdateInterval);
         }
@@ -90,7 +86,7 @@ public class EnemyMovement : MonoBehaviour
         Vector3 moveDirection = (targetPosition - transform.position).normalized;
         
         // Only update direction if we're actually moving
-        if (moveDirection != Vector3.zero)
+        if (moveDirection.sqrMagnitude > 0.01f)
         {
             currentMoveDirection = moveDirection;
             
