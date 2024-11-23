@@ -10,12 +10,16 @@ public class EnemyMovement : MonoBehaviour
     public float moveSpeed = 2f;
     public float pathUpdateInterval = 0.5f;
     public float rotationSpeed = 5f;
+    public float aggroRange = 5f; // Distance at which enemy starts following player
+    public float deaggroRange = 7f; // Distance at which enemy stops following player (slightly larger to prevent constant switching)
     
     private AStarPathfinding pathfinding;
     private List<Vector2Int> path;
     private int currentPathIndex = 0;
     private Rigidbody2D rb;
     private Vector3 currentMoveDirection = Vector3.right;
+    private bool isAggro = false;
+    private Vector3 startingPosition; // Store the enemy's initial position
 
     void Start()
     {
@@ -34,16 +38,49 @@ public class EnemyMovement : MonoBehaviour
         }
         
         pathfinding.collisionTilemap = collisionTilemap;
+        startingPosition = transform.position; // Save the starting position
         
         StartCoroutine(UpdatePath());
     }
 
     void Update()
     {
+        if (player == null) return;
+
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+        // Check if player is within aggro range
+        if (!isAggro && distanceToPlayer <= aggroRange)
+        {
+            isAggro = true;
+            Debug.Log("Player entered aggro range!");
+        }
+        // Check if player has left the deaggro range
+        else if (isAggro && distanceToPlayer > deaggroRange)
+        {
+            isAggro = false;
+            path = null; // Clear the current path
+            ReturnToStart();
+            Debug.Log("Player left aggro range!");
+        }
+
+        // Only move if we have a path and are either aggro'd on the player or returning home
         if (path != null && path.Count > 0)
         {
             MoveAlongPath();
         }
+    }
+
+    void ReturnToStart()
+    {
+        Vector3Int startCell = collisionTilemap.WorldToCell(startingPosition);
+        Vector3Int currentCell = collisionTilemap.WorldToCell(transform.position);
+        
+        Vector2Int startGridPos = new Vector2Int(startCell.x, startCell.y);
+        Vector2Int currentGridPos = new Vector2Int(currentCell.x, currentCell.y);
+
+        path = pathfinding.FindPath(currentGridPos, startGridPos);
+        currentPathIndex = 0;
     }
 
     IEnumerator UpdatePath()
@@ -56,19 +93,22 @@ public class EnemyMovement : MonoBehaviour
                 yield break;
             }
 
-            Vector3Int enemyCell = collisionTilemap.WorldToCell(transform.position);
-            Vector3Int playerCell = collisionTilemap.WorldToCell(player.position);
-
-            Vector2Int enemyGridPos = new Vector2Int(enemyCell.x, enemyCell.y);
-            Vector2Int playerGridPos = new Vector2Int(playerCell.x, playerCell.y);
-
-            List<Vector2Int> newPath = pathfinding.FindPath(enemyGridPos, playerGridPos);
-
-            if (newPath != null && newPath.Count > 0)
+            if (isAggro) // Only update path to player if aggro'd
             {
-                path = newPath;
-                currentPathIndex = 0;
-                Debug.Log($"New path found with {path.Count} nodes");
+                Vector3Int enemyCell = collisionTilemap.WorldToCell(transform.position);
+                Vector3Int playerCell = collisionTilemap.WorldToCell(player.position);
+
+                Vector2Int enemyGridPos = new Vector2Int(enemyCell.x, enemyCell.y);
+                Vector2Int playerGridPos = new Vector2Int(playerCell.x, playerCell.y);
+
+                List<Vector2Int> newPath = pathfinding.FindPath(enemyGridPos, playerGridPos);
+
+                if (newPath != null && newPath.Count > 0)
+                {
+                    path = newPath;
+                    currentPathIndex = 0;
+                    Debug.Log($"New path found with {path.Count} nodes");
+                }
             }
 
             yield return new WaitForSeconds(pathUpdateInterval);
@@ -122,6 +162,12 @@ public class EnemyMovement : MonoBehaviour
 
     void OnDrawGizmos()
     {
+        // Draw the aggro ranges
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, aggroRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, deaggroRange);
+
         // Draw the path for debugging
         if (path != null && path.Count > 0)
         {

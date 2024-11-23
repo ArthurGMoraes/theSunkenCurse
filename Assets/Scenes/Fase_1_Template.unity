@@ -51701,7 +51701,7 @@ TilemapRenderer:
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
-  m_Mode: 0
+  m_Mode: 1
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
 --- !u!1839735485 &644505079
@@ -58423,7 +58423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3242413538033019118, guid: 24af6b1b82754e04d96667482c4bcea1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.7319956
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 3242413538033019118, guid: 24af6b1b82754e04d96667482c4bcea1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -59120,6 +59120,10 @@ PrefabInstance:
       propertyPath: pathfinding
       value: 
       objectReference: {fileID: 1544865112}
+    - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
+      propertyPath: rotationSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
       propertyPath: collisionTilemap
       value: 
