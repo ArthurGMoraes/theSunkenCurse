@@ -35,7 +35,10 @@ public class Projectile : MonoBehaviour
                 }
                 Debug.Log("tiro");
             }
-            DestroyProjectile();
+            if (!(hitInfo.collider.CompareTag("Player"))){
+                Debug.Log("destruiu");
+                DestroyProjectile();
+            }
         }
         transform.Translate(Vector2.up * speed * Time.deltaTime);
     }
