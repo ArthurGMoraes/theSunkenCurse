@@ -58008,7 +58008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813a0e4635ed2dc44a0f084aaede0cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1348158165}
   collisionTilemap: {fileID: 644505079}
   gridSize: {x: 1, y: 1}
 --- !u!4 &1544865113

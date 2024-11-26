@@ -204,7 +204,7 @@ MonoBehaviour:
   player: {fileID: 0}
   collisionTilemap: {fileID: 0}
   moveSpeed: 2
-  pathUpdateInterval: 0.5
+  pathUpdateInterval: 1
   rotationSpeed: 5
   aggroRange: 5
   deaggroRange: 7
