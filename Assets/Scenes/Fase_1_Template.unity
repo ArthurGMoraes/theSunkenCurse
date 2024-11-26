@@ -49925,6 +49925,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1919122025}
     m_Modifications:
+    - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 796426106}
+    - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
+      propertyPath: pathfinding
+      value: 
+      objectReference: {fileID: 1544865112}
+    - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
+      propertyPath: collisionTilemap
+      value: 
+      objectReference: {fileID: 644505079}
     - target: {fileID: 1306472206249175669, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
       propertyPath: target
       value: 
@@ -50691,6 +50703,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1919122025}
     m_Modifications:
+    - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 796426106}
+    - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
+      propertyPath: pathfinding
+      value: 
+      objectReference: {fileID: 1544865112}
+    - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
+      propertyPath: collisionTilemap
+      value: 
+      objectReference: {fileID: 644505079}
     - target: {fileID: 1306472206249175669, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
       propertyPath: target
       value: 
@@ -51677,7 +51701,7 @@ TilemapRenderer:
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
-  m_Mode: 0
+  m_Mode: 1
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
 --- !u!1839735485 &644505079
@@ -56817,6 +56841,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1919122025}
     m_Modifications:
+    - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 796426106}
+    - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
+      propertyPath: pathfinding
+      value: 
+      objectReference: {fileID: 1544865112}
+    - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
+      propertyPath: collisionTilemap
+      value: 
+      objectReference: {fileID: 644505079}
     - target: {fileID: 1306472206249175669, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
       propertyPath: target
       value: 
@@ -57858,6 +57894,53 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1544865111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1544865113}
+  - component: {fileID: 1544865112}
+  m_Layer: 0
+  m_Name: PathFinder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1544865112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544865111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 813a0e4635ed2dc44a0f084aaede0cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 796426106}
+  collisionTilemap: {fileID: 644505079}
+  gridSize: {x: 1, y: 1}
+--- !u!4 &1544865113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544865111}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -43.473053, y: -4.2949624, z: 5.0559387}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1547809018
 GameObject:
   m_ObjectHideFlags: 0
@@ -58340,7 +58423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3242413538033019118, guid: 24af6b1b82754e04d96667482c4bcea1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.7319956
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 3242413538033019118, guid: 24af6b1b82754e04d96667482c4bcea1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -58499,6 +58582,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1919122025}
     m_Modifications:
+    - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 796426106}
+    - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
+      propertyPath: pathfinding
+      value: 
+      objectReference: {fileID: 1544865112}
+    - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
+      propertyPath: collisionTilemap
+      value: 
+      objectReference: {fileID: 644505079}
     - target: {fileID: 1306472206249175669, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
       propertyPath: target
       value: 
@@ -58706,6 +58801,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1919122025}
     m_Modifications:
+    - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 796426106}
+    - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
+      propertyPath: pathfinding
+      value: 
+      objectReference: {fileID: 1544865112}
+    - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
+      propertyPath: collisionTilemap
+      value: 
+      objectReference: {fileID: 644505079}
     - target: {fileID: 1306472206249175669, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
       propertyPath: target
       value: 
@@ -58810,7 +58917,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 644505077}
@@ -59005,6 +59112,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1919122025}
     m_Modifications:
+    - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 796426106}
+    - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
+      propertyPath: pathfinding
+      value: 
+      objectReference: {fileID: 1544865112}
+    - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
+      propertyPath: rotationSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -4429980244415253930, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
+      propertyPath: collisionTilemap
+      value: 
+      objectReference: {fileID: 644505079}
     - target: {fileID: 1306472206249175669, guid: 45f2f43a7cf8f0640bc76c0c8cbee47e, type: 3}
       propertyPath: target
       value: 
@@ -59085,3 +59208,4 @@ SceneRoots:
   - {fileID: 1547809022}
   - {fileID: 1597521468}
   - {fileID: 1570380191}
+  - {fileID: 1544865113}
