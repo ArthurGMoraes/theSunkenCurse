@@ -54,7 +54,6 @@ public class HabilidadeManager : MonoBehaviour
 
     private void ExibirHabilidades()
     {
-        // Limpa os botões existentes no painel
         foreach (Transform child in painelHabilidades)
         {
             Destroy(child.gameObject);
@@ -85,7 +84,6 @@ public class HabilidadeManager : MonoBehaviour
 
     private void AjustarDisposicaoBotoes()
     {
-        // Obtém o componente HorizontalLayoutGroup
         HorizontalLayoutGroup layoutGroup = painelHabilidades.GetComponent<HorizontalLayoutGroup>();
 
         if (layoutGroup != null)
@@ -93,10 +91,9 @@ public class HabilidadeManager : MonoBehaviour
             // Configura o layout para centralizar os botões
             layoutGroup.childControlWidth = true;
             layoutGroup.childForceExpandWidth = false;
-            layoutGroup.childAlignment = TextAnchor.MiddleCenter; // Centraliza os botões no layout
+            layoutGroup.childAlignment = TextAnchor.MiddleCenter; 
 
-            // Optional: Set spacing between buttons if needed
-            layoutGroup.spacing = 10; // Adjust spacing as desired
+            layoutGroup.spacing = 10; 
         }
     }
 
