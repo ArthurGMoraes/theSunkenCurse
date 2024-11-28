@@ -20,18 +20,18 @@ public class HabilidadeManager : MonoBehaviour
     private void InicializarHabilidades()
     {
         // Adicionando habilidades
-        lista.AdicionarUpgrade("Upgrade 1", 10);
-        lista.AdicionarUpgrade("Jetpack Speed I", 50);
-        lista.AdicionarUpgrade("Jetpack Speed II", 100); // Depende de Jetpack Speed I e Jetpack Fuel I
-        lista.AdicionarUpgrade("Jetpack Speed III", 200); // Depende de Jetpack Speed II
-        lista.AdicionarUpgrade("Jetpack Fuel I", 50);
-        lista.AdicionarUpgrade("Jetpack Fuel II", 100); // Depende de Jetpack Fuel I
-        lista.AdicionarUpgrade("Health I", 75);
-        lista.AdicionarUpgrade("Health II", 150); // Depende de Health I e Jetpack Speed II
-        lista.AdicionarUpgrade("Damage I", 75);
-        lista.AdicionarUpgrade("Damage II", 150); // Depende de Damage I e Health II
-        lista.AdicionarUpgrade("Jetpack Refil I", 100);
-        lista.AdicionarUpgrade("Jetpack Refil II", 200);
+        lista.AdicionarUpgrade("Iniciar loja", 0);
+        lista.AdicionarUpgrade("Jetpack Speed I", 1);
+        lista.AdicionarUpgrade("Jetpack Speed II", 2); // Depende de Jetpack Speed I e Jetpack Fuel I
+        lista.AdicionarUpgrade("Jetpack Speed III", 3); // Depende de Jetpack Speed II
+        lista.AdicionarUpgrade("Jetpack Fuel I", 1);
+        lista.AdicionarUpgrade("Jetpack Fuel II", 3); // Depende de Jetpack Fuel I
+        lista.AdicionarUpgrade("Health I", 2);
+        lista.AdicionarUpgrade("Health II", 4); // Depende de Health I e Jetpack Speed II
+        lista.AdicionarUpgrade("Damage I", 2);
+        lista.AdicionarUpgrade("Damage II", 3); // Depende de Damage I e Health II
+        lista.AdicionarUpgrade("Jetpack Refil I", 1);
+        lista.AdicionarUpgrade("Jetpack Refil II", 3);
         // Definindo as dependências
         lista.AddAresta(0, 1); // Upgrade 1 -> Jetpack Speed I
         lista.AddAresta(1, 2); // Jetpack Speed I -> Jetpack Speed II
@@ -98,20 +98,21 @@ public class HabilidadeManager : MonoBehaviour
     }
 
     private void ComprarHabilidade(int indice)
-{
-    if (lista.IsCompravel(indice))
+{   int preco = lista.GetCelula(indice).Preco;
+    int balanco = PlayerPrefs.GetInt("Coin");
+    if (lista.IsCompravel(indice) && preco <= balanco)
     {
-        int preco = lista.Comprar(indice);
+        lista.Comprar(indice);
         Debug.Log($"Comprou a habilidade: {lista.GetCelula(indice).Nome} por {preco} moedas.");
 
         // Aplicar o upgrade ao jogador
         lista.GetCelula(indice).AplicarUpgrade(upgradeManager);
-
+        PlayerPrefs.SetInt("Coin", balanco-preco);
         ExibirHabilidades(); // Atualiza a lista de habilidades disponíveis
     }
     else
     {
-        Debug.Log($"A habilidade {lista.GetCelula(indice).Nome} não pode ser comprada ainda.");
+        Debug.Log($"A habilidade {lista.GetCelula(indice).Nome} não pode ser comprada ainda, faltam {preco - balanco} moedas");
     }
 }
 
