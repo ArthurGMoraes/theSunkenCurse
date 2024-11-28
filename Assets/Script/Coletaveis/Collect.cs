@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Collect : MonoBehaviour
 {
+    AudioManager audioManager;
     private Object thisObj;
     public PlayerHealth playerHealth;
 
     private void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         thisObj = GetComponent<Object>();
     }
 
@@ -18,11 +20,13 @@ public class Collect : MonoBehaviour
         {
             if ((thisObj.ID).Equals("Coin"))
             {
-                PlayerPrefs.SetInt(thisObj.ID, PlayerPrefs.GetInt(thisObj.ID) + 1); 
+                PlayerPrefs.SetInt(thisObj.ID, PlayerPrefs.GetInt(thisObj.ID) + 1);
+                audioManager.PlaySFX(audioManager.coinClip);
             }
             else if ((thisObj.ID).Equals("Vida"))
             {
                 playerHealth.Heal(2);
+                audioManager.PlaySFX(audioManager.healthClip);
             }
             Destroy(gameObject);
 
