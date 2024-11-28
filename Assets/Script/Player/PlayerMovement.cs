@@ -34,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
 
     public float upgradeValue = 1.00f;
 
+    public bool isWalking = false;
+    public bool isFloating = false;
+
     // time 0.5 kb 2.3 parece debaixo d�gue
     // time 0.2 kb 5 fica bom mas acho que nao combina com o tema
 
@@ -50,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         GetInput();
 
         Animate();
+
     }
 
     private void FixedUpdate()
@@ -104,12 +108,42 @@ public class PlayerMovement : MonoBehaviour
             ResetRotation();
         }
            
-        
-        
-        
+        if(!isWalking && moveDirectionH != 0)
+        {
+            isFloating = true;
+        } else
+        {
+            isFloating = false;
+        }
 
+        animator.SetBool("isFloating", isFloating);
+        animator.SetBool("isWalking", isWalking);
         animator.SetBool("isJumping", isJumping);
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Parede") && moveDirectionH != 0)
+        {
+            isWalking = true;
+    
+        } else if(collision.gameObject.CompareTag("Parede"))
+        {
+            isWalking = false;
+ 
+        } 
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Parede"))
+        {
+            isWalking = false;
+            
+        }
+    }
+
+
 
     void FuelUpdate()
     {
