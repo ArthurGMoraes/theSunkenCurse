@@ -49901,6 +49901,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111392317}
   m_CullTransparentMesh: 1
+--- !u!1001 &111463740
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7031106958007070253, guid: 59cf98c7df35c5d429f376aca60e01c0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.471615
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031106958007070253, guid: 59cf98c7df35c5d429f376aca60e01c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -26.546244
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031106958007070253, guid: 59cf98c7df35c5d429f376aca60e01c0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031106958007070253, guid: 59cf98c7df35c5d429f376aca60e01c0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031106958007070253, guid: 59cf98c7df35c5d429f376aca60e01c0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031106958007070253, guid: 59cf98c7df35c5d429f376aca60e01c0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031106958007070253, guid: 59cf98c7df35c5d429f376aca60e01c0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031106958007070253, guid: 59cf98c7df35c5d429f376aca60e01c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031106958007070253, guid: 59cf98c7df35c5d429f376aca60e01c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031106958007070253, guid: 59cf98c7df35c5d429f376aca60e01c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956421183463003828, guid: 59cf98c7df35c5d429f376aca60e01c0, type: 3}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 1348158157}
+    - target: {fileID: 8958826059735077357, guid: 59cf98c7df35c5d429f376aca60e01c0, type: 3}
+      propertyPath: m_Name
+      value: Vida
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 59cf98c7df35c5d429f376aca60e01c0, type: 3}
 --- !u!1001 &115401517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56585,6 +56646,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 1113786775636821448, guid: 74c257b877f3b614bad1fe256633dac6, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 1562782450019423872, guid: 74c257b877f3b614bad1fe256633dac6, type: 3}
       propertyPath: playerHealth
       value: 
@@ -59185,3 +59250,4 @@ SceneRoots:
   - {fileID: 1570380191}
   - {fileID: 1544865113}
   - {fileID: 1348589035}
+  - {fileID: 111463740}

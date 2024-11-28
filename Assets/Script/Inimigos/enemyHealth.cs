@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Drawing;
 
 public class enemyHealth : MonoBehaviour
 {
@@ -9,7 +10,9 @@ public class enemyHealth : MonoBehaviour
     public int maxHealth = 3;
     public int health;
 
- 
+    public GameObject coin;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,7 @@ public class enemyHealth : MonoBehaviour
         if (health <= 0)
         {
             health = 0;
+            Instantiate(coin, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }
     }
