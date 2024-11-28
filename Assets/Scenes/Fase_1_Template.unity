@@ -256,6 +256,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 25131998}
   m_CullTransparentMesh: 1
+--- !u!114 &34106297 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6680435749002331906, guid: 14b2b25eb76af4d4c8971e23845c8ae2, type: 3}
+  m_PrefabInstance: {fileID: 1348589035}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5c75a70dd1006f49ac50b3224f0c4ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &45525342
 GameObject:
   m_ObjectHideFlags: 0
@@ -50023,6 +50034,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 285797825}
   m_CullTransparentMesh: 1
+--- !u!1 &305273581 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 253252335256970570, guid: 14b2b25eb76af4d4c8971e23845c8ae2, type: 3}
+  m_PrefabInstance: {fileID: 1348589035}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &391872025
 GameObject:
   m_ObjectHideFlags: 0
@@ -56696,9 +56712,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1a91fd5b322bc48a827054ea9ca8d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  playerMovement: {fileID: 0}
-  playerHealth: {fileID: 0}
+  player: {fileID: 305273581}
+  playerMovement: {fileID: 1348158161}
+  playerHealth: {fileID: 1348158157}
+  playerAttack: {fileID: 34106297}
+  projectile: {fileID: 4324785329830367830, guid: b966bab0b49e99d44a4bc239c8ebcd66, type: 3}
   Panel: {fileID: 827913173}
 --- !u!4 &1222637401
 Transform:
@@ -56890,7 +56908,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5653384773909601630, guid: 14b2b25eb76af4d4c8971e23845c8ae2, type: 3}
   m_PrefabInstance: {fileID: 1348589035}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 305273581}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e601186f2bfa06e44ad58edc5c0d4f01, type: 3}
@@ -56901,7 +56919,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8172441232526438892, guid: 14b2b25eb76af4d4c8971e23845c8ae2, type: 3}
   m_PrefabInstance: {fileID: 1348589035}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 305273581}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 799cd18018a4a2646976e8fa6380a570, type: 3}
@@ -56977,9 +56995,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1197759197}
     - target: {fileID: 8172441232526438892, guid: 14b2b25eb76af4d4c8971e23845c8ae2, type: 3}
+      propertyPath: isWalking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172441232526438892, guid: 14b2b25eb76af4d4c8971e23845c8ae2, type: 3}
       propertyPath: fuelSlider
       value: 
       objectReference: {fileID: 284950919}
+    - target: {fileID: 8172441232526438892, guid: 14b2b25eb76af4d4c8971e23845c8ae2, type: 3}
+      propertyPath: upgradeValue
+      value: 1.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

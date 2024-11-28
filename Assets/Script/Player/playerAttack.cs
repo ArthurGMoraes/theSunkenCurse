@@ -10,6 +10,8 @@ public class PlayerAttack : MonoBehaviour
     public Transform point;
     public float raio;
     public LayerMask enemies;
+
+    public int damage; 
     
 
     public float attackRateMelee;
@@ -79,7 +81,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                attack(1);
+                attack();
                 attackTimeMelee = 0;
                 //Debug.Log("re");
             }
@@ -110,7 +112,7 @@ public class PlayerAttack : MonoBehaviour
     }
 
     
-    public void attack(int dmg)
+    public void attack()
     {
         Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, raio, enemies);
         foreach (Collider2D e in enemy)
@@ -118,8 +120,8 @@ public class PlayerAttack : MonoBehaviour
             enemyHealth health = e.GetComponent<enemyHealth>();
             if (health != null)
             {
-                health.TakeDamage(dmg);
-                Debug.Log("receba");
+                health.TakeDamage(damage);
+                Debug.Log("receba " + damage + "de dano");
             }
         }
     }

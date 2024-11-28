@@ -11,7 +11,7 @@ public class Projectile : MonoBehaviour
     public float distance;
     public LayerMask solid;
 
-
+    public int damage = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
                 enemyHealth health = hitInfo.collider.GetComponent<enemyHealth>();
                 if (health != null)
                 {
-                    health.TakeDamage(1);
+                    health.TakeDamage(damage);
                     Debug.Log("receba");
                 }
                 Debug.Log("tiro");
