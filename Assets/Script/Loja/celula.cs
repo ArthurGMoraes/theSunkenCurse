@@ -84,10 +84,10 @@ public class Celula
                  break;
              case "Damage I":
                  UnityEngine.Debug.Log("ENTROU NO CASE");
-                 upgradeManager.ApplyAttackUpgrade(1);
+                 upgradeManager.ApplyAttackUpgradeI();
                  break;
              case "Damage II":
-                 upgradeManager.ApplyAttackUpgrade(1);
+                 upgradeManager.ApplyAttackUpgradeII();
                  break;        
             // Adicione mais casos conforme necessário
             default:

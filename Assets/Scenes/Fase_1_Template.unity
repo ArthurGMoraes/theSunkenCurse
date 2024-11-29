@@ -57243,6 +57243,11 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &647890036 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8677634927362521784, guid: 14b2b25eb76af4d4c8971e23845c8ae2, type: 3}
+  m_PrefabInstance: {fileID: 1348589035}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &649833593
 GameObject:
   m_ObjectHideFlags: 0
@@ -59004,7 +59009,6 @@ GameObject:
   - component: {fileID: 1047337656}
   - component: {fileID: 1047337655}
   - component: {fileID: 1047337662}
-  - component: {fileID: 1047337663}
   m_Layer: 3
   m_Name: Boss
   m_TagString: Enemy
@@ -60180,7 +60184,7 @@ MonoBehaviour:
   playerHealth: {fileID: 1348158157}
   playerAttack: {fileID: 34106297}
   projectile: {fileID: 4324785329830367830, guid: b966bab0b49e99d44a4bc239c8ebcd66, type: 3}
-  Panel: {fileID: 827913173}
+  Panel: {fileID: 1547809018}
 --- !u!4 &1222637401
 Transform:
   m_ObjectHideFlags: 0
@@ -60658,6 +60662,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5260180719592870952, guid: 14b2b25eb76af4d4c8971e23845c8ae2, type: 3}
   m_PrefabInstance: {fileID: 1348589035}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1348158166 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 54969549744119527, guid: 14b2b25eb76af4d4c8971e23845c8ae2, type: 3}
+  m_PrefabInstance: {fileID: 1348589035}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1348589035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60715,9 +60724,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 450797029}
     - target: {fileID: 6680435749002331906, guid: 14b2b25eb76af4d4c8971e23845c8ae2, type: 3}
+      propertyPath: raio
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6680435749002331906, guid: 14b2b25eb76af4d4c8971e23845c8ae2, type: 3}
       propertyPath: damage
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6680435749002331906, guid: 14b2b25eb76af4d4c8971e23845c8ae2, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1348158166}
+    - target: {fileID: 6680435749002331906, guid: 14b2b25eb76af4d4c8971e23845c8ae2, type: 3}
+      propertyPath: attackPoint
+      value: 
+      objectReference: {fileID: 647890036}
     - target: {fileID: 6680435749002331906, guid: 14b2b25eb76af4d4c8971e23845c8ae2, type: 3}
       propertyPath: attackSlider
       value: 
@@ -61472,7 +61493,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1547809019
 MonoBehaviour:
   m_ObjectHideFlags: 0
