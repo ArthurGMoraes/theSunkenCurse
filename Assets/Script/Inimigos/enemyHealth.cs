@@ -11,6 +11,8 @@ public class enemyHealth : MonoBehaviour
     public int health;
 
     public GameObject coin;
+    public GameManager gameManager;
+    public string ID = "Enemy";
 
 
     // Start is called before the first frame update
@@ -25,6 +27,10 @@ public class enemyHealth : MonoBehaviour
         if (health <= 0)
         {
             health = 0;
+            if (ID.Equals("Boss")){
+                gameManager.gameWin();
+            }
+            
             Instantiate(coin, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }

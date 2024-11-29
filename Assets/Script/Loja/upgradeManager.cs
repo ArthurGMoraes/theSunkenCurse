@@ -21,19 +21,19 @@ public class UpgradeManager : MonoBehaviour
     // Nova lista para rastrear upgrades comprados
     private List<string> purchasedUpgrades = new List<string>();
 
-    private void Awake()
-    {
-        // Singleton pattern
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-             Destroy(gameObject);
-        }
-    }
+    //private void Awake()
+    //{
+    //    // Singleton pattern
+    //    if (Instance == null)
+    //    {
+    //        Instance = this;
+    //        DontDestroyOnLoad(gameObject);
+    //    }
+    //    else
+    //    {
+    //         Destroy(gameObject);
+    //    }
+    //}
 
     private void Start()
     {

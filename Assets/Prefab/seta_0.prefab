@@ -103,3 +103,4 @@ MonoBehaviour:
   solid:
     serializedVersion: 2
     m_Bits: 72
+  damage: 1
