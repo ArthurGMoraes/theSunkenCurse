@@ -10,6 +10,7 @@ public class PlayerAttack : MonoBehaviour
     public Transform point;
     public float raio;
     public LayerMask enemies;
+    public Animator animator;
 
     public int damage = 1; 
     
@@ -83,6 +84,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 attack();
                 attackTimeMelee = 0;
+                animator.SetTrigger("soco");
                 //Debug.Log("re");
             }
         }

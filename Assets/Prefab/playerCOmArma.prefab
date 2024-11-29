@@ -104,6 +104,8 @@ MonoBehaviour:
   enemies:
     serializedVersion: 2
     m_Bits: 72
+  animator: {fileID: 0}
+  damage: 1
   attackRateMelee: 0.6
   attackRateRanged: 3
   attackSlider: {fileID: 0}
@@ -148,6 +150,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4426665041472391096}
+  - {fileID: 85699981273375950}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3742953968772901388
@@ -275,6 +278,8 @@ MonoBehaviour:
   KbTime: 0.5
   KnockFromRight: 0
   upgradeValue: 1.75
+  isWalking: 0
+  isFloating: 0
 --- !u!70 &542747435776947150
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -385,4 +390,35 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4426665041472391096}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8677634927362521784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 85699981273375950}
+  m_Layer: 3
+  m_Name: soco
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &85699981273375950
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8677634927362521784}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.96, y: 0.582, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5260180719592870952}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

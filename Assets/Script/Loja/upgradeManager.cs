@@ -81,12 +81,26 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
-    public void ApplyAttackUpgrade(int damageIncrease)
+    public void ApplyAttackUpgradeI()
     {
         if (player != null)
         {
-            playerAttack.damage += damageIncrease + 1;
-            projectile.damage += damageIncrease;
+            playerAttack.damage = 3;
+            projectile.damage = 2;
+            Debug.Log("Novo dano melee: " + playerAttack.damage + " Novo dano a distância: " + projectile.damage);
+        }
+        else
+        {
+            Debug.Log("É PACABA");
+        }
+    }
+
+    public void ApplyAttackUpgradeII()
+    {
+        if (player != null)
+        {
+            playerAttack.damage = 6;
+            projectile.damage = 5;
             Debug.Log("Novo dano melee: " + playerAttack.damage + " Novo dano a distância: " + projectile.damage);
         }
         else
@@ -164,10 +178,10 @@ public class UpgradeManager : MonoBehaviour
                 ApplyRefilUpgrade(4);
                 break;
             case "Damage I":
-                ApplyAttackUpgrade(1);
+                ApplyAttackUpgradeI();
                 break;
             case "Damage II":
-                ApplyAttackUpgrade(2);
+                ApplyAttackUpgradeII();
                 break;
         }
     }
