@@ -59004,8 +59004,9 @@ GameObject:
   - component: {fileID: 1047337656}
   - component: {fileID: 1047337655}
   - component: {fileID: 1047337662}
+  - component: {fileID: 1047337663}
   m_Layer: 3
-  m_Name: boss_frames_0
+  m_Name: Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59157,7 +59158,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!4 &1047337661
 Transform:
   m_ObjectHideFlags: 0
@@ -59166,12 +59167,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047337654}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.53211737, y: -1.5332327, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.528, y: 6.337, z: 0.3731667}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1919122025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1047337662
 MonoBehaviour:
@@ -60671,11 +60672,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5260180719592870952, guid: 14b2b25eb76af4d4c8971e23845c8ae2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.41
+      value: 6.72
       objectReference: {fileID: 0}
     - target: {fileID: 5260180719592870952, guid: 14b2b25eb76af4d4c8971e23845c8ae2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.33
+      value: -1.69
       objectReference: {fileID: 0}
     - target: {fileID: 5260180719592870952, guid: 14b2b25eb76af4d4c8971e23845c8ae2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -63042,6 +63043,7 @@ Transform:
   - {fileID: 817919711}
   - {fileID: 901040501}
   - {fileID: 877440348}
+  - {fileID: 1047337661}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1963358963
@@ -63948,4 +63950,3 @@ SceneRoots:
   - {fileID: 1348589035}
   - {fileID: 111463740}
   - {fileID: 509063726}
-  - {fileID: 1047337661}

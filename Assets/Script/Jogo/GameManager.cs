@@ -28,5 +28,6 @@ public class GameManager : MonoBehaviour
     {
         gameWinUI.SetActive(true);
         gamePauseUI.SetActive(false);
+        Time.timeScale = 0;
     }
 }

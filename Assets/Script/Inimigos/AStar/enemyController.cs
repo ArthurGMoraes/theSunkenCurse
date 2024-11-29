@@ -21,6 +21,8 @@ public class EnemyMovement : MonoBehaviour
     private bool isAggro = false;
     private Vector3 startingPosition; // Store the enemy's initial position
 
+    bool facingRight = true;
+
     void Start()
     {
         pathfinding = GetComponent<AStarPathfinding>();
@@ -49,6 +51,8 @@ public class EnemyMovement : MonoBehaviour
 
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
+       
+
         // Check if player is within aggro range
         if (!isAggro && distanceToPlayer <= aggroRange)
         {
@@ -69,6 +73,12 @@ public class EnemyMovement : MonoBehaviour
         {
             MoveAlongPath();
         }
+    }
+
+    void FlipCharacter()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(180f, 0f, 0f);
     }
 
     void ReturnToStart()
@@ -128,6 +138,10 @@ public class EnemyMovement : MonoBehaviour
         // Only update direction if we're actually moving
         if (moveDirection.sqrMagnitude > 0.01f)
         {
+            if ((moveDirection.x < 0 && facingRight) || (moveDirection.x > 0 && !facingRight))
+            {
+                FlipCharacter();
+            }
             currentMoveDirection = moveDirection;
             
             // Calculate the angle for rotation

@@ -11,7 +11,7 @@ public class PlayerAttack : MonoBehaviour
     public float raio;
     public LayerMask enemies;
 
-    public int damage; 
+    public int damage = 1; 
     
 
     public float attackRateMelee;

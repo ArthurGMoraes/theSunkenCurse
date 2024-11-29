@@ -15,6 +15,7 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        damage = 1;
         Invoke("DestroyProjectile", lifetime);
 
     }
